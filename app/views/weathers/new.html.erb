@@ -1,0 +1,12 @@
+<h1>Welcome#index</h1>
+<p>Find me in app/views/welcome/index.html.erb</p>
+
+<%= form_for @weather do |f| %>
+  <%= f.label :location_name %><br>
+  <%= f.text_field :location_name %>
+  <%= f.submit %>
+<% end %>
+
+<% if @error %>
+  <p><%= @error %></p>
+<% end %>
