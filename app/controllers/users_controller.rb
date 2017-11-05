@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def new
-    redirect_to new_weather_path if helpers.current_user
+    redirect_to new_search_path if helpers.logged_in?
     @user = User.new
   end
 
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
     if @user.save
       helpers.login(@user)
-      redirect_to new_weather_path
+      redirect_to new_search_path
     else
       #TODO: Error messages customized for displaying to user
       @error = 'ERROR - User did not save'

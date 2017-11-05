@@ -1,0 +1,15 @@
+<% if logged_in? %>
+  <p><%= current_user.username %></p>
+<% end %>
+
+<h1>Searches#show</h1>
+
+<p><%= @search %></p>
+<p><%= @search.user.username %></p>
+
+<p><%= @weather[:location_name] %></p>
+<p><%= @weather[:lat] %></p>
+<p><%= @weather[:lng] %></p>
+<p><%= @weather[:current_weather] %></p>
+<p><%= @weather[:two_day_hourly_weather] %></p>
+<p><%= @weather[:week_daily_weather] %></p>

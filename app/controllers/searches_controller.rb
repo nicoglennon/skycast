@@ -1,14 +1,14 @@
-class WeathersController < ApplicationController
+class SearchesController < ApplicationController
 
   def new
-    @weather = Weather.new
+    @search = Search.new
   end
 
   def create
-    @weather = Weather.new
+    @search = Search.new
 
     # geolocation service
-    geolocation_response = GeolocationService.new(params["weather"]["location_name"]).json_request
+    geolocation_response = GeolocationService.new(params["location"]).json_request
 
     if geolocation_response['status'] == "OK"
       location_name = GeolocationService.location_name(geolocation_response)
@@ -23,19 +23,19 @@ class WeathersController < ApplicationController
 
       week_daily_weather = WeatherService.week_daily_weather(weather_response)
 
-      # update the Weather object with response values
-      @weather.assign_attributes({
-          location_name: location_name,
-          lat: coordinates['lat'],
-          lng: coordinates['lng'],
-          current_weather: current_weather['summary'],
-          two_day_hourly_weather: two_day_hourly_weather['summary'],
-          week_daily_weather: week_daily_weather['summary']
+      # update the Search object with response values
+      @search.assign_attributes({
+        location_name: location_name,
+        lat: coordinates['lat'],
+        lng: coordinates['lng'],
         }
       )
 
-      ## test search object
-      @search = {
+      #associate search with current_user
+      @search.user = helpers.current_user
+
+      ## weather object
+      @weather = {
             location_name: location_name,
             lat: coordinates['lat'],
             lng: coordinates['lng'],
@@ -44,10 +44,10 @@ class WeathersController < ApplicationController
             week_daily_weather: week_daily_weather
           }
 
-      if @weather.save
+      if @search.save
         render 'show'
       else
-        @error = "ERROR - Weather object not valid!"
+        @error = "ERROR - Search object not valid!"
         render 'new'
       end
     else
@@ -58,6 +58,6 @@ class WeathersController < ApplicationController
   end
 
   def show
-    @weather = Weather.find(params[:id])
+    @search = Search.find(params[:id])
   end
 end

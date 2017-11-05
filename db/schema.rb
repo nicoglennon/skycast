@@ -15,21 +15,21 @@ ActiveRecord::Schema.define(version: 20171105033401) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "searches", force: :cascade do |t|
+    t.string "location_name"
+    t.decimal "lat"
+    t.decimal "lng"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_searches_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "weathers", force: :cascade do |t|
-    t.string "location_name"
-    t.decimal "lat"
-    t.decimal "lng"
-    t.string "current_weather"
-    t.string "two_day_hourly_weather"
-    t.string "week_daily_weather"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+  add_foreign_key "searches", "users"
 end
