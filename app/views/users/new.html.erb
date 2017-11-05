@@ -2,11 +2,11 @@
   <p><%= current_user.username %></p>
 <% end %>
 
-<h1>Weathers#new</h1>
+<h1>Users#new</h1>
 
-<%= form_for @weather do |f| %>
-  <%= f.label :location_name %><br>
-  <%= f.text_field :location_name %>
+<%= form_for @user do |f| %>
+  <%= f.label :username %><br>
+  <%= f.text_field :username %>
   <%= f.submit %>
 <% end %>
 

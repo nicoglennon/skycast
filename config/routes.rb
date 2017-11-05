@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  root 'weathers#new'
+  root 'users#new'
 
-  resources :weathers
-
+  resources :weathers, only: [:new, :create, :show]
+  resources :users, only: [:new, :create]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

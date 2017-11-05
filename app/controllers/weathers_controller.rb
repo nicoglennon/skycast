@@ -11,11 +11,11 @@ class WeathersController < ApplicationController
     geolocation_response = GeolocationService.new(params["weather"]["location_name"]).json_request
 
     if geolocation_response['status'] == "OK"
-      @location_name = GeolocationService.location_name(geolocation_response)
-      @coordinates = GeolocationService.coordinates(geolocation_response)
+      location_name = GeolocationService.location_name(geolocation_response)
+      coordinates = GeolocationService.coordinates(geolocation_response)
 
       # weather service
-      weather_response = WeatherService.new(@coordinates).json_request
+      weather_response = WeatherService.new(coordinates).json_request
 
       current_weather = WeatherService.current_weather(weather_response)
 
@@ -25,18 +25,29 @@ class WeathersController < ApplicationController
 
       # update the Weather object with response values
       @weather.assign_attributes({
-          location_name: @location_name,
-          lat: @coordinates['lat'],
-          lng: @coordinates['lng'],
+          location_name: location_name,
+          lat: coordinates['lat'],
+          lng: coordinates['lng'],
           current_weather: current_weather['summary'],
           two_day_hourly_weather: two_day_hourly_weather['summary'],
           week_daily_weather: week_daily_weather['summary']
         }
       )
+
+      ## test search object
+      @search = {
+            location_name: location_name,
+            lat: coordinates['lat'],
+            lng: coordinates['lng'],
+            current_weather: current_weather,
+            two_day_hourly_weather: two_day_hourly_weather,
+            week_daily_weather: week_daily_weather
+          }
+
       if @weather.save
-        redirect_to weather_path(@weather)
+        render 'show'
       else
-        @error = "ERROR - Weather didn't save!"
+        @error = "ERROR - Weather object not valid!"
         render 'new'
       end
     else
