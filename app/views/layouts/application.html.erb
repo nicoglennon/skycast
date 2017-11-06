@@ -4,9 +4,6 @@
     <title>Skycast</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
     <!-- Materialize CSS -->
     <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css' %>
     <!-- Materialize icons -->
@@ -15,9 +12,16 @@
     <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js' %>
     <!-- Materialize JS -->
     <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.0/js/materialize.min.js' %>
+
+    <!-- Application CSS and JS -->
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render partial: 'layouts/navbar' %>
+    <main class="container" id="main-content">
+      <%= yield %>
+    </main>
   </body>
 </html>

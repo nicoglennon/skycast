@@ -1,7 +1,3 @@
-<% if logged_in? %>
-  <%= link_to current_user.username, user_path(current_user) %>
-<% end %>
-
 <h1>Searches#show</h1>
 
 <p><%= @search.user.username %></p>

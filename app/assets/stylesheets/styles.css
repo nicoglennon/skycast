@@ -1,0 +1,21 @@
+.logo {
+  color: black;
+  padding: 0 25px;
+}
+
+div.nav-wrapper {
+  background-color: #fff
+}
+
+ul li a.navbar-a {
+  padding: 0 40px;
+  color: black;
+}
+
+.scrolled {
+  box-shadow: none !important;
+  transition: box-shadow 400ms linear;
+
+  -webkit-box-shadow: none !important;
+  transition: -webkit-box-shadow 400ms linear;
+}
