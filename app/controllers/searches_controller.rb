@@ -2,6 +2,7 @@ class SearchesController < ApplicationController
 
   def new
     @search = Search.new
+    @history = helpers.current_user.searches.last(3).reverse
   end
 
   def create

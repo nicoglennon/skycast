@@ -1,5 +1,7 @@
 .main-title:hover {
   color: #26a69a;
+  transition: color 300ms;
+  -webkit-transition: color 300ms;
 }
 
 .logo {
@@ -40,4 +42,20 @@ ul li a.navbar-a {
 
 .input-btn {
   margin-top: 10px;
+}
+
+div.recent-searches {
+  margin-top: 60px;
+}
+
+p.recent-searches-p {
+  margin: 0px;
+  padding: 10px;
+  color: #26a69a;
+
+}
+
+.recent-searches-p:hover {
+  background-color: #f6f6f6;
+  transition: background-color 300ms;
 }
