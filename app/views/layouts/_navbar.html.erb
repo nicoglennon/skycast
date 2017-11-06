@@ -2,11 +2,11 @@
   <% if logged_in? %>
     <nav class="scrolled">
       <div class="nav-wrapper">
-        <a href="/" class="brand-logo logo"><i class="material-icons logo-color logo">cloud_queue</i></a>
+        <a href="/" class="left logo"><i class="material-icons logo-color">cloud_queue</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><%= link_to "SEARCH", "/search", class: "navbar-a" %></li>
           <li><a href="#" class="navbar-a">TIME MACHINE</a></li>
-          <li><%= link_to "@" + current_user.username.upcase, user_path(current_user), class: "navbar-a" %></li>
+          <li><%= link_to "@" + current_user.username.upcase, user_path(current_user), class: "navbar-a profile-a" %></li>
         </ul>
       </div>
     </nav>

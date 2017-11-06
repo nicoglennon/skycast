@@ -1,6 +1,24 @@
+.main-title:hover {
+  color: #26a69a;
+}
+
 .logo {
   color: black;
-  padding: 0 25px;
+  display: inline-block;
+  margin: 0 25px;
+}
+
+.logo-color {
+  color: black;
+}
+
+div.input-field {
+  margin-bottom: 0px;
+}
+
+div.input-field label, input {
+  font-size: 18px !important;
+
 }
 
 div.nav-wrapper {
@@ -18,4 +36,8 @@ ul li a.navbar-a {
 
   -webkit-box-shadow: none !important;
   transition: -webkit-box-shadow 400ms linear;
+}
+
+.input-btn {
+  margin-top: 10px;
 }
