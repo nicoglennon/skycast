@@ -1,7 +1,23 @@
-.main-title:hover {
-  color: #26a69a;
-  transition: color 300ms;
-  -webkit-transition: color 300ms;
+body {
+  font-family: 'Work Sans', sans-serif;
+  transition: background-color 300ms;
+}
+
+main#main-content {
+  margin-top: 90px;
+  margin-bottom: 60px;
+}
+
+.main-title {
+  font-size: 90px;
+}
+
+div.nav-wrapper {
+  background-color: transparent !important;
+}
+
+nav {
+  background-color: #fff;
 }
 
 .logo {
@@ -20,11 +36,10 @@ div.input-field {
 
 div.input-field label, input {
   font-size: 18px !important;
-
 }
 
-div.nav-wrapper {
-  background-color: #fff
+.search-button-field{
+  margin-top: 0px;
 }
 
 ul li a.navbar-a {
@@ -33,6 +48,7 @@ ul li a.navbar-a {
 }
 
 .scrolled {
+  background-color: transparent;
   box-shadow: none !important;
   transition: box-shadow 400ms linear;
 
@@ -40,22 +56,100 @@ ul li a.navbar-a {
   transition: -webkit-box-shadow 400ms linear;
 }
 
-.input-btn {
-  margin-top: 10px;
-}
-
 div.recent-searches {
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
 p.recent-searches-p {
   margin: 0px;
   padding: 10px;
   color: #26a69a;
-
+  transition: background-color 300ms, transform 200ms;
 }
 
 .recent-searches-p:hover {
   background-color: #f6f6f6;
-  transition: background-color 300ms;
+  transition: background-color 300ms, transform 200ms;
+  transform: translateX(-10px)
+}
+
+.faded-title {
+  opacity: 0.5;
+}
+
+.background-change {
+  background-color: #d4eaea;
+  transition: background-color 400ms;
+}
+
+
+/* Weather card formats */
+
+.weather-card-summary {
+  font-size: 40px;
+}
+
+.weather-card-temperature {
+  font-size: 100px;
+}
+
+.weather-card-details {
+  font-size: 25px;
+}
+
+/* Week card formats */
+
+.week-temp-icon {
+  font-size: 100px;
+  margin-left: 40px;
+}
+
+.week-temp-day {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.week-temp-number-high {
+  font-size: 30px;
+}
+
+.week-temp-number-low {
+  font-size: 30px;
+  opacity: 0.6;
+}
+
+.weekday-temp-icon {
+  font-size: 50px;
+}
+
+.weekday-div {
+  margin-top: 20px;
+  padding: 10px;
+  text-align: center;
+  transition: background-color 200ms ease-out, transform 100ms ease-out;
+}
+
+.weekday-div:hover {
+  background-color: #00796b;
+  transition: background-color 50ms ease-out, transform 200ms ease-out;
+  transform: translateY(-5px);
+}
+
+hr {
+  margin: 40px 0px 20px 0px;
+}
+
+main.fade-this {
+  animation: fadeIn 600ms ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }

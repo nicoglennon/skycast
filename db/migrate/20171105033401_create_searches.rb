@@ -3,6 +3,7 @@ class CreateSearches < ActiveRecord::Migration[5.1]
     create_table :searches do |t|
 
       #attributes
+      t.string :search_term
       t.string :location_name
       t.decimal :lat
       t.decimal :lng

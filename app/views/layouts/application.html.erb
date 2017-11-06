@@ -4,14 +4,19 @@
     <title>Skycast</title>
     <%= csrf_meta_tags %>
 
-    <!-- Materialize CSS -->
-    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css' %>
-    <!-- Materialize icons -->
-    <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
     <!-- JQuery -->
     <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js' %>
+    <!-- Google Fonts -->
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Work+Sans" %>
+
+    <!-- Materialize CSS -->
+    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css' %>
+
     <!-- Materialize JS -->
-    <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.0/js/materialize.min.js' %>
+    <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js' %>
+
+    <!-- Materialize icons -->
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
 
     <!-- Application CSS and JS -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -20,7 +25,7 @@
 
   <body>
     <%= render partial: 'layouts/navbar' %>
-    <main class="container" id="main-content">
+    <main class="container fade-this" id="main-content">
       <%= yield %>
     </main>
   </body>

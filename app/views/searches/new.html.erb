@@ -1,15 +1,13 @@
-<!-- <h1>Search</h1> -->
-
 <div class="row">
   <div class="col s5">
-    <h3>Search</h3>
+    <h2>Search</h2>
     <%= form_tag("/search/results", method: "get") do %>
     <div class="input-field">
-      <%= label_tag(:location, "Search city, landmark or location:") %>
+      <%= label_tag(:location, "Search for city, town, or landmark:") %>
       <%= text_field_tag(:location) %>
     </div>
-    <div class="input-field">
-      <%= submit_tag "Search", name: nil, class: "input-btn btn right"%>
+    <div class="input-field search-button-field">
+      <%= submit_tag "Search", name: nil, class: "input-btn btn right search-button"%>
     </div>
     <% end %>
   </div>
@@ -20,12 +18,12 @@
           <h5>Recent Searches</h5>
           <div class="col s8">
             <% @history.each do |hist| %>
-              <a href="/search/results?location=<%= hist.location_name %>"><p class=recent-searches-p><%= hist.location_name %></p></a>
+              <a href="/search/results?location=<%= hist.search_term %>"><p class=recent-searches-p><%= hist.search_term %></p></a>
             <% end %>
           </div>
         <% else %>
-          <h5>Your recent searches will appear here.</h5>
-          <h5>Try searching for a city, landmark or location in the box on the left.</h5>
+          <h5>Your recent weather searches will appear here.</h5>
+          <h5>Try searching for a city, town or near a landmark in the box on the left.</h5>
         <% end %>
       </div>
   </div>

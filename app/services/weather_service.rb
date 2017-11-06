@@ -47,6 +47,7 @@ class WeatherService
   end
 
   def json_request
+    p options[:key]
     HTTParty.get('https://api.darksky.net/forecast/' + options[:key] + '/' + options[:lat] + ',' + options[:lng], format: :json)
   end
 end

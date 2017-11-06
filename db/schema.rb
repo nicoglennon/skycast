@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20171105033401) do
   enable_extension "plpgsql"
 
   create_table "searches", force: :cascade do |t|
+    t.string "search_term"
     t.string "location_name"
     t.decimal "lat"
     t.decimal "lng"

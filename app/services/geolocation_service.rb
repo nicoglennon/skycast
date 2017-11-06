@@ -14,7 +14,7 @@ class GeolocationService
 
   def self.location_name(response)
     #return location name of first response
-    location_hash = response["results"][0]["address_components"][0]["long_name"]
+    location_hash = response["results"][0]["formatted_address"]
   end
 
   def json_request

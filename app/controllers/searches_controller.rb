@@ -2,7 +2,7 @@ class SearchesController < ApplicationController
 
   def new
     @search = Search.new
-    @history = helpers.current_user.searches.last(3).reverse
+    @history = helpers.current_user.searches.last(5).reverse
   end
 
   def create
@@ -26,6 +26,7 @@ class SearchesController < ApplicationController
 
       # update the Search object with response values
       @search.assign_attributes({
+        search_term: params["location"],
         location_name: location_name,
         lat: coordinates['lat'],
         lng: coordinates['lng'],
@@ -35,8 +36,9 @@ class SearchesController < ApplicationController
       #associate search with current_user
       @search.user = helpers.current_user
 
-      ## weather object
+      ## virtual weather object
       @weather = {
+            search_term: params["location"],
             location_name: location_name,
             lat: coordinates['lat'],
             lng: coordinates['lng'],
