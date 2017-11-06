@@ -8,8 +8,6 @@ module UsersHelper
   end
 
   def current_user
-    p session
-    p session[:user_id]
     User.find(session[:user_id])
   end
 

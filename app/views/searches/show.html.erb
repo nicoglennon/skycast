@@ -1,15 +1,13 @@
 <% if logged_in? %>
-  <p><%= current_user.username %></p>
+  <%= link_to current_user.username, user_path(current_user) %>
 <% end %>
 
 <h1>Searches#show</h1>
 
-<p><%= @search %></p>
 <p><%= @search.user.username %></p>
-
-<p><%= @weather[:location_name] %></p>
-<p><%= @weather[:lat] %></p>
-<p><%= @weather[:lng] %></p>
-<p><%= @weather[:current_weather] %></p>
-<p><%= @weather[:two_day_hourly_weather] %></p>
-<p><%= @weather[:week_daily_weather] %></p>
+<p>Location name: <%= @weather[:location_name] %></p>
+<p>Latitude: <%= @weather[:lat] %></p>
+<p>Longitude: <%= @weather[:lng] %></p>
+<p>Current weather: <%= @weather[:current_weather] %></p>
+<p>Two-day Weather by hour: <%= @weather[:two_day_hourly_weather] %></p>
+<p> Week weather by day: <%= @weather[:week_daily_weather] %></p>

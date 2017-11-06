@@ -1,0 +1,12 @@
+<% if logged_in? %>
+  <%= link_to current_user.username, user_path(current_user) %>
+<% end %>
+
+<h1>Users#show</h1>
+<h2>Username: @<%= @user.username %></h2>
+<br>
+<p>Searches by this user:</p>
+<% @user.searches.each do |search| %>
+  <a href="/search/results?location=<%= search.location_name %>"><%= search.location_name %></a>
+  <br>
+<% end %>

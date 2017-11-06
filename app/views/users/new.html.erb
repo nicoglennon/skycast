@@ -1,5 +1,5 @@
 <% if logged_in? %>
-  <p><%= current_user.username %></p>
+  <%= link_to current_user.username, user_path(current_user) %>
 <% end %>
 
 <h1>Users#new</h1>
