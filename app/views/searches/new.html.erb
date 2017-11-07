@@ -16,7 +16,7 @@
       <div class="recent-searches">
         <% if !@history.empty? %>
           <h5>Recent Searches</h5>
-          <div class="col s8">
+          <div class="col s8" data-turbolinks="false">
             <% @history.each do |hist| %>
               <a href="/search/results?location=<%= hist.search_term %>"><p class=recent-searches-p><%= hist.search_term %></p></a>
             <% end %>

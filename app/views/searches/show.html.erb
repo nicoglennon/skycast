@@ -1,43 +1,56 @@
 <h4 class="faded-title">Results for '<%= @weather[:search_term] %>'</h4>
 
-<h1><%= @weather[:location_name] %></h1>
 <!-- <p>Latitude: <%= @weather[:lat] %></p>
 <p>Longitude: <%= @weather[:lng] %></p> -->
 
 <!-- TODO: Convert time to regular time -->
-<!-- TODO: place google map inside card -->
-<div class="row">
-  <div class="col s12">
-    <div class="card teal lighten-2">
-      <div class="card-content white-text">
-        <span class="card-title faded-title">Today, <%= unix_hour_parser(@weather[:current_weather]["time"].to_s) %></h5></span>
-        <div class="row">
-          <div class="col s6">
-            <p class="weather-card-temperature"><i class="<%= lookup_icon(@weather[:current_weather]["icon"])%> "></i> <strong><%= @weather[:current_weather]["temperature"].round %>°F</strong></p>
-            <p class="weather-card-summary"><%= @weather[:current_weather]["summary"] %></p>
-            <p><strong>Precipitation chance: </strong><%= @weather[:current_weather]["precipProbability"] * 100 %>%</p>
-            <p><strong>Humidity: </strong><%= @weather[:current_weather]["humidity"] %></p>
-            <p><strong>Windspeed: </strong><%= @weather[:current_weather]["windSpeed"] %> mph</p>
-          </div>
-          <div class="col s6 weather-card-details">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- TODO: place google map inside card? -->
+
 
 <!-- <p>Two-day Weather by hour: <%= @weather[:two_day_hourly_weather] %></p> -->
 
 <!-- <p> Week weather by day: <%= @weather[:week_daily_weather] %></p> -->
 
+
+<div class="card teal lighten-2">
+    <div class="card-content white-text">
+      <span class="card-title faded-title">Today, <%= unix_hour_parser(@weather[:current_weather]["time"].to_s) %></h5></span>
+      <h1><%= @weather[:location_name] %></h1>
+    </div>
+    <div class="card-tabs">
+      <ul class="tabs tabs-fixed-width tabs-transparent">
+        <li class="tab"><a class="active tab-link" href="#temperature" data-turbolinks="false">Temp</a></li>
+        <li class="tab"><a class="tab-link" href="#details" data-turbolinks="false" >Details</a></li>
+        <li class="tab"><a class="tab-link" href="#map" data-turbolinks="false">Map</a></li>
+      </ul>
+    </div>
+    <div class="card-content white">
+      <div id="temperature">
+        <div class="row">
+          <div class="col s6">
+            <p class="weather-card-temperature"><i class="<%= lookup_icon(@weather[:current_weather]["icon"])%> "></i> <strong><%= @weather[:current_weather]["temperature"].round %>°F</strong></p>
+          </div>
+          <div class="col s6 weather-card-details">
+            <p class="weather-card-summary faded-title"><%= @weather[:current_weather]["summary"] %></p>
+          </div>
+        </div>
+      </div>
+      <div id="details" class="weather-card-details-tab">
+        <p><strong>Precipitation chance: </strong><%= @weather[:current_weather]["precipProbability"] * 100 %>%</p>
+        <p><strong>Humidity: </strong><%= @weather[:current_weather]["humidity"] %></p>
+        <p><strong>Windspeed: </strong><%= @weather[:current_weather]["windSpeed"] %> mph</p>
+      </div>
+      <div id="map">map here.</div>
+    </div>
+  </div>
+
 <div class="row">
   <div class="col s12">
-    <div class="card teal darken-3">
+    <div class="card teal lighten-2">
       <div class="card-content white-text">
         <span class="card-title faded-title">Week Forecast</span>
-        <p><i class="<%= lookup_icon(@weather[:week_daily_weather][:icon]) %>  fa-5x"></i></p>
-        <h4 class="weather-card-summary"><%= @weather[:week_daily_weather][:summary] %></h4>
+        <p class="week-temp-icon-p"><i class="<%= lookup_icon(@weather[:week_daily_weather][:icon]) %>  fa-5x week-temp-icon"></i></p>
+        <h4 class="week-card-summary"><%= @weather[:week_daily_weather][:summary] %></h4>
         <hr>
         <div class="row">
           <% @weather[:week_daily_weather][:data].first(6).each do |day| %>

@@ -86,7 +86,8 @@ p.recent-searches-p {
 /* Weather card formats */
 
 .weather-card-summary {
-  font-size: 40px;
+  margin-top: 45px !important;
+  font-size: 50px;
 }
 
 .weather-card-temperature {
@@ -99,9 +100,17 @@ p.recent-searches-p {
 
 /* Week card formats */
 
+.week-card-summary {
+  font-size: 40px;
+}
+
 .week-temp-icon {
   font-size: 100px;
-  margin-left: 40px;
+}
+
+p.week-temp-icon-p {
+  margin-top: 30px !important;
+  margin-left: 10px !important;
 }
 
 .week-temp-day {
@@ -130,13 +139,18 @@ p.recent-searches-p {
 }
 
 .weekday-div:hover {
-  background-color: #00796b;
+  background-color: #80cbc4;
   transition: background-color 50ms ease-out, transform 200ms ease-out;
   transform: translateY(-5px);
 }
 
 hr {
   margin: 40px 0px 20px 0px;
+  border: 1px white solid;
+}
+
+li.tab a.tab-link {
+  font-size: 20px;
 }
 
 main.fade-this {
@@ -152,4 +166,14 @@ main.fade-this {
     opacity: 1;
     transform: translateY(0px);
   }
+}
+
+div#temperature, div#details {
+  opacity: 0.8;
+}
+
+.weather-card-details-tab {
+  padding: 15px 10px;
+  font-size: 40px;
+
 }
