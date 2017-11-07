@@ -1,15 +1,16 @@
 class UsersController < ApplicationController
   def new
-    redirect_to new_search_path if helpers.logged_in?
+    redirect_to '/search' if helpers.logged_in?
     @user = User.new
   end
 
   def create
     @user = User.new(user_params)
+    @user.username = @user.username.downcase
 
     if @user.save
       helpers.login(@user)
-      redirect_to new_search_path
+      redirect_to '/search'
     else
       @error = 'This username is taken!'
       render :new
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by_id(params[:id]) || @user = User.find_by(username: params[:id])
   end
 
   private
