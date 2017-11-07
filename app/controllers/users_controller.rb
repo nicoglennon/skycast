@@ -11,8 +11,7 @@ class UsersController < ApplicationController
       helpers.login(@user)
       redirect_to new_search_path
     else
-      #TODO: Error messages customized for displaying to user
-      @error = 'ERROR - User did not save'
+      @error = 'This username is taken!'
       render :new
     end
   end

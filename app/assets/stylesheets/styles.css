@@ -1,6 +1,7 @@
 body {
   font-family: 'Work Sans', sans-serif;
   transition: background-color 300ms;
+  -webkit-transition: background-color 300ms;
 }
 
 main#main-content {
@@ -9,7 +10,9 @@ main#main-content {
 }
 
 .main-title {
+  font-weight: 800;
   font-size: 90px;
+  opacity: 0.9;
 }
 
 div.nav-wrapper {
@@ -21,25 +24,47 @@ nav {
 }
 
 .logo {
-  color: black;
   display: inline-block;
-  margin: 0 25px;
+  margin: 0px 0px 0px 25px;
+  height: 100%;
+}
+
+img.logo-img {
+  margin-top: 10px;
 }
 
 .logo-color {
   color: black;
+  display: inline-block !important;
+
+}
+
+input.signup-btn {
+  margin-top: 10px;
+  font-size: 20px !important;
 }
 
 div.input-field {
   margin-bottom: 0px;
 }
 
-div.input-field label, input {
+div.input-field input#user_username {
+  height: 50px !important;
+  font-size: 30px !important;
+}
+
+div.input-field label {
+  height: 50px !important;
   font-size: 18px !important;
 }
 
 .search-button-field{
-  margin-top: 0px;
+  margin-top: 10px;
+}
+
+.search-button {
+
+  font-size: 20px !important;
 }
 
 ul li a.navbar-a {
@@ -61,6 +86,7 @@ div.recent-searches {
 }
 
 p.recent-searches-p {
+  font-size: 22px;
   margin: 0px;
   padding: 10px;
   color: #26a69a;
@@ -80,6 +106,7 @@ p.recent-searches-p {
 .background-change {
   background-color: #d4eaea;
   transition: background-color 400ms;
+  -webkit-transition: background-color 400ms;
 }
 
 
@@ -175,4 +202,54 @@ div#temperature, div#details {
 .weather-card-details-tab {
   padding: 15px 10px;
   font-size: 40px;
+}
+
+.search-input-fields input {
+  height: 60px !important;
+  font-size: 30px !important;
+}
+
+.username-input input {
+
+}
+
+.no-searches-div {
+  margin-left: 10px;
+  opacity: 0.6;
+}
+
+.error-p {
+  margin-top: 0 !important;
+  font-size: 30px;
+  color: red;
+}
+
+.source-link {
+  position: relative;
+  color: #26a69a;
+  text-decoration: none;
+}
+
+.source-link:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: #26a69a;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
+}
+
+.source-link:hover {
+}
+
+.source-link:hover::before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
 }

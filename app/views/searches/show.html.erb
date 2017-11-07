@@ -14,7 +14,7 @@
 <div class="card teal lighten-2">
     <div class="card-content white-text">
       <span class="card-title faded-title">Today, <%= unix_hour_parser(@weather[:current_weather]["time"].to_s) %></h5></span>
-      <h1><%= @weather[:location_name] %></h1>
+      <h2><%= @weather[:location_name] %></h2>
     </div>
     <div class="card-tabs">
       <ul class="tabs tabs-fixed-width tabs-transparent">

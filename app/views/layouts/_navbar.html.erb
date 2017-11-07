@@ -2,7 +2,8 @@
   <% if logged_in? %>
     <nav class="scrolled">
       <div class="nav-wrapper">
-        <a href="/" class="left logo"><i class="material-icons logo-color">cloud_queue</i></a>
+        <a href="/" class="left logo">
+        <img class="logo-img" height="45" WIDTH="45" src="<%= image_path('favicon.ico') %>" /></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><%= link_to "SEARCH", "/search", class: "navbar-a" %></li>
           <li><a href="#" class="navbar-a">TIME MACHINE</a></li>
@@ -13,7 +14,8 @@
   <% else %>
     <nav class="scrolled">
       <div class="nav-wrapper">
-        <a href="/" class="left logo"><i class="material-icons logo-color">cloud_queue</i></a>
+        <a href="/" class="left logo">
+        <img class="logo-img" height="45" WIDTH="45" src="<%= image_path('favicon.ico') %>" /></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
         </ul>
       </div>

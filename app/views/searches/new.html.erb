@@ -2,8 +2,8 @@
   <div class="col s5">
     <h2>Search</h2>
     <%= form_tag("/search/results", method: "get") do %>
-    <div class="input-field">
-      <%= label_tag(:location, "Search for city, town, or landmark:") %>
+    <div class="input-field search-input-fields">
+      <%= label_tag(:location, "City, town, or landmark:") %>
       <%= text_field_tag(:location) %>
     </div>
     <div class="input-field search-button-field">
@@ -14,16 +14,18 @@
 
   <div class="col s5 right">
       <div class="recent-searches">
+        <h4>Recent Searches</h4>
         <% if !@history.empty? %>
-          <h5>Recent Searches</h5>
           <div class="col s8" data-turbolinks="false">
             <% @history.each do |hist| %>
               <a href="/search/results?location=<%= hist.search_term %>"><p class=recent-searches-p><%= hist.search_term %></p></a>
             <% end %>
           </div>
         <% else %>
-          <h5>Your recent weather searches will appear here.</h5>
-          <h5>Try searching for a city, town or landmark in the box on the left.</h5>
+          <div class="no-searches-div">
+            <h5>Your recent weather searches will appear here.</h5>
+            <h5>Try searching for a city, town or landmark in the box on the left.</h5>
+          </div>
         <% end %>
       </div>
   </div>
