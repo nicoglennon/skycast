@@ -4,7 +4,6 @@
 <p>Longitude: <%= @weather[:lng] %></p> -->
 
 <!-- TODO: Convert time to regular time -->
-<!-- TODO: place google map inside card? -->
 
 
 <!-- <p>Two-day Weather by hour: <%= @weather[:two_day_hourly_weather] %></p> -->
@@ -40,7 +39,15 @@
         <p><strong>Humidity: </strong><%= @weather[:current_weather]["humidity"] %></p>
         <p><strong>Windspeed: </strong><%= @weather[:current_weather]["windSpeed"] %> mph</p>
       </div>
-      <div id="map">map here.</div>
+      <div id="map">
+        <iframe
+          width="100%"
+          height="450"
+          frameborder="0" style="border:0"
+          src="https://www.google.com/maps/embed/v1/place?key=<%= ENV["GEOLOCATION_KEY"] %>
+            &q=<%= @weather[:location_name] %>" allowfullscreen>
+        </iframe>
+      </div>
     </div>
   </div>
 

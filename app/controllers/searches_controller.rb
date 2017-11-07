@@ -57,7 +57,6 @@ class SearchesController < ApplicationController
       @error = "ERROR - geolocation response is not OK!"
       render 'new'
     end
-
   end
 
   def show

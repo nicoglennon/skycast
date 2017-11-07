@@ -6,7 +6,7 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><%= link_to "SEARCH", "/search", class: "navbar-a" %></li>
           <li><a href="#" class="navbar-a">TIME MACHINE</a></li>
-          <li><%= link_to "@" + current_user.username.upcase, user_path(current_user), class: "navbar-a profile-a" %></li>
+          <li><%= link_to "PROFILE", user_path(current_user), class: "navbar-a profile-a" %></li>
         </ul>
       </div>
     </nav>

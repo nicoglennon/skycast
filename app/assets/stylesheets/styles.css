@@ -5,7 +5,7 @@ body {
 
 main#main-content {
   margin-top: 90px;
-  margin-bottom: 60px;
+  margin-bottom: 90px;
 }
 
 .main-title {
@@ -175,5 +175,4 @@ div#temperature, div#details {
 .weather-card-details-tab {
   padding: 15px 10px;
   font-size: 40px;
-
 }
