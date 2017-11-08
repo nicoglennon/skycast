@@ -2,6 +2,11 @@ class SearchesController < ApplicationController
 
   def new
     @search = Search.new
+
+    if params["type"] == 'timemachine'
+      @timemachine = true
+    end
+
     @history = helpers.current_user.searches.last(5).reverse
   end
 
@@ -15,14 +20,6 @@ class SearchesController < ApplicationController
       location_name = GeolocationService.location_name(geolocation_response)
       coordinates = GeolocationService.coordinates(geolocation_response)
 
-      # weather service
-      weather_response = WeatherService.new(coordinates).json_request
-
-      current_weather = WeatherService.current_weather(weather_response)
-
-      two_day_hourly_weather = WeatherService.two_day_hourly_weather(weather_response)
-
-      week_daily_weather = WeatherService.week_daily_weather(weather_response)
 
       # update the Search object with response values
       @search.assign_attributes({
@@ -33,28 +30,66 @@ class SearchesController < ApplicationController
         }
       )
 
+      ## weather service
+
       #associate search with current_user
       @search.user = helpers.current_user
 
-      ## virtual weather object
-      @weather = {
-            search_term: params["location"],
-            location_name: location_name,
-            lat: coordinates['lat'],
-            lng: coordinates['lng'],
-            current_weather: current_weather,
-            two_day_hourly_weather: two_day_hourly_weather,
-            week_daily_weather: week_daily_weather
-          }
+      #if time machine:
+      if params['date']
+        weather_response = WeatherService.new(coordinates).time_machine_request(params['date'])
+        p 'THIS IS WEATHER_RESPONSE FROM TIME MACHINE'
+
+        p weather_response
+        @temp = weather_response
+
+        @weather = {
+          search_term: 'test',
+          location_name: 'Test Location',
+          lat: coordinates['lat'],
+          lng: coordinates['lng'],
+          # current_weather: current_weather,
+          # two_day_hourly_weather: two_day_hourly_weather,
+          # week_daily_weather: week_daily_weather
+        }
+
+      # if forecast:
+      else
+        weather_response = WeatherService.new(coordinates).json_request
+
+        current_weather = WeatherService.current_weather(weather_response)
+
+        # two_day_hourly_weather = WeatherService.two_day_hourly_weather(weather_response)
+
+        week_daily_weather = WeatherService.week_daily_weather(weather_response)
+
+        ## virtual weather object
+        @weather = {
+          search_term: params["location"],
+          location_name: location_name,
+          lat: coordinates['lat'],
+          lng: coordinates['lng'],
+          current_weather: current_weather,
+          # two_day_hourly_weather: two_day_hourly_weather,
+          week_daily_weather: week_daily_weather
+        }
+      end
+
 
       if @search.save
         render 'show'
       else
-        @error = "ERROR - Search object not valid!"
+        @error = "Search object did not save!"
+
+        @history = helpers.current_user.searches.last(5).reverse
+
         render 'new'
       end
     else
-      @error = "ERROR - geolocation response is not OK!"
+      @error = "Geolocation response failed!"
+
+      @history = helpers.current_user.searches.last(5).reverse
+
       render 'new'
     end
   end

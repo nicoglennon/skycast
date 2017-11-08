@@ -10,4 +10,9 @@ module TimeHelper
     datetime = DateTime.strptime(unix,'%s')
     datetime.strftime("%a")
   end
+
+  # def date_to_unix(date)
+  #   p "THIS IS DATE_TO_UNIX RETURN VALUE"
+  #   date.to_time.to_i
+  # end
 end

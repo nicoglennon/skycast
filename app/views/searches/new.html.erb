@@ -1,18 +1,24 @@
-<div class="row">
-  <div class="col s5">
-    <h2>Search</h2>
-    <%= form_tag("/search/results", method: "get") do %>
-    <div class="input-field search-input-fields">
-      <%= label_tag(:location, "City, town, or landmark:") %>
-      <%= text_field_tag(:location) %>
+<!-- time machine -->
+<% if @timemachine %>
+  <div class="row">
+    <div class="col s5">
+      <h4 class="faded-title">Search</h4>
+      <h2>Time Machine</h2>
+      <%= form_tag("/search/results", method: "get") do %>
+      <div class="input-field search-input-fields">
+        <%= text_field_tag(:location) %>
+        <%= label_tag(:location, "City, town, or landmark:") %>
+        <div class="input-field search-input-fields">
+          <%= label_tag(:date, "Click to select date:") %>
+          <%= text_field_tag(:date, nil, class: "datepicker") %>
+       </div>
+      </div>
+      <div class="input-field search-button-field">
+        <%= submit_tag "Search", name: nil, class: "input-btn btn right search-button"%>
+      </div>
+      <% end %>
     </div>
-    <div class="input-field search-button-field">
-      <%= submit_tag "Search", name: nil, class: "input-btn btn right search-button"%>
-    </div>
-    <% end %>
-  </div>
-
-  <div class="col s5 right">
+    <div class="col s5 right">
       <div class="recent-searches">
         <h4>Recent Searches</h4>
         <% if !@history.empty? %>
@@ -28,9 +34,54 @@
           </div>
         <% end %>
       </div>
+    </div>
   </div>
-</div>
 
+<!-- forecast -->
+<% else %>
+  <div class="row">
+    <div class="col s5">
+      <h4 class="faded-title">Search</h4>
+      <h2>Forecast</h2>
+      <%= form_tag("/search/results", method: "get") do %>
+      <div class="input-field search-input-fields">
+        <%= label_tag(:location, "City, town, or landmark:") %>
+        <%= text_field_tag(:location) %>
+      </div>
+      <div class="input-field search-button-field">
+        <%= submit_tag "Search", name: nil, class: "input-btn btn right search-button"%>
+      </div>
+      <% end %>
+    </div>
+    <div class="col s5 right">
+      <div class="recent-searches">
+        <h4>Recent Searches</h4>
+        <% if !@history.empty? %>
+          <div class="col s8" data-turbolinks="false">
+            <% @history.each do |hist| %>
+              <a href="/search/results?location=<%= hist.search_term %>"><p class=recent-searches-p><%= hist.search_term %></p></a>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="no-searches-div">
+            <h5>Your recent weather searches will appear here.</h5>
+            <h5>Try searching for a city, town or landmark in the box on the left.</h5>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
 <% if @error %>
   <p><%= @error %></p>
 <% end %>
+<script>
+  $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    today: 'Today',
+    clear: 'Clear',
+    close: 'Ok',
+    closeOnSelect: false // Close upon selecting a date,
+  });
+</script>
