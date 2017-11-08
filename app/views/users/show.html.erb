@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col s5">
+  <div class="col s5 fade-this">
     <h4 class="faded-title">Profile</h4>
     <h1>@<%= @user.username %></h1>
   </div>
@@ -15,7 +15,7 @@
       <% else %>
         <div class="no-searches-div">
           <h5>Your recent weather searches will appear here.</h5>
-          <h5>Try searching for a city, town or landmark in the box on the left.</h5>
+          <h5>Try searching for a <a href="/search" class="prof-link">forecast</a> or using the <a class="prof-link" href="/search?type=timemachine">time machine</a>.</h5>
         </div>
       <% end %>
     </div>

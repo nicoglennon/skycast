@@ -180,7 +180,7 @@ li.tab a.tab-link {
   font-size: 20px;
 }
 
-main.fade-this {
+.fade-this {
   animation: fadeIn 600ms ease-in-out;
 }
 
@@ -229,7 +229,14 @@ div#temperature, div#details {
   text-decoration: none;
 }
 
-.source-link:before {
+.prof-link {
+  position: relative;
+  color: #000;
+  opacity: 1 !important;
+  text-decoration: none;
+}
+
+.source-link:before, .prof-link:before {
   content: "";
   position: absolute;
   width: 100%;
@@ -244,10 +251,10 @@ div#temperature, div#details {
   transition: all 0.2s ease-in-out 0s;
 }
 
-.source-link:hover {
+.source-link:hover, .prof-link:hover {
 }
 
-.source-link:hover::before {
+.source-link:hover::before, .prof-link:hover::before {
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);

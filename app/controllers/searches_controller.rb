@@ -38,16 +38,16 @@ class SearchesController < ApplicationController
       #if time machine:
       if params['date']
         weather_response = WeatherService.new(coordinates).time_machine_request(params['date'])
-        p 'THIS IS WEATHER_RESPONSE FROM TIME MACHINE'
 
         p weather_response
         @temp = weather_response
 
         @weather = {
-          search_term: 'test',
-          location_name: 'Test Location',
+          search_term: params["location"],
+          location_name: location_name,
           lat: coordinates['lat'],
           lng: coordinates['lng'],
+          time: params['date']
           # current_weather: current_weather,
           # two_day_hourly_weather: two_day_hourly_weather,
           # week_daily_weather: week_daily_weather

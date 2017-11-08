@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     if @user.save
       helpers.login(@user)
-      redirect_to '/search'
+      redirect_to '/users/' + @user.username
     else
       @error = 'This username is taken!'
       render :new

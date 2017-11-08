@@ -1,12 +1,13 @@
 $(document).ready(function(){
   var $temp = $('.temp_information').data('temp').hourly.data
-  var tempArray = ['temp']
+  var tempArray = ['temperature']
   var timeArray = ['time']
 
   $temp.forEach(function(day) {
     tempArray.push(day.temperature);
-    var t = new Date();
-    timeArray.push(t.setSeconds(day.time));
+    var date = new Date(day.time*1000);
+    timeArray.push(date);
+    console.log(date)
   });
   var chart = c3.generate({
     data: {
@@ -20,13 +21,17 @@ $(document).ready(function(){
     },
     axis: {
         x: {
+            label: "Time",
             type: 'timeseries',
             // if true, treat x value as localtime (Default)
             // if false, convert to UTC internally
             localtime: false,
             tick: {
-                format: '%H:%M'
+                format: '%I:%M %p'
             }
+        },
+        y: {
+          label: "Temperature (F)"
         }
     }
   });
