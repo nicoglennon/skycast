@@ -21,6 +21,15 @@
     <!-- Materialize icons -->
     <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
 
+    <!-- d3.js -->
+    <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js' %>
+
+    <!-- c3 CSS -->
+    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.18/c3.min.css' %>
+
+    <!-- c3 JS  -->
+    <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.18/c3.min.js' %>
+
     <!-- Application CSS and JS -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -28,7 +37,7 @@
 
   <body>
     <%= render partial: 'layouts/navbar' %>
-    <main class="container fade-this" id="main-content">
+    <main class="container" id="main-content">
       <%= yield %>
     </main>
   </body>
