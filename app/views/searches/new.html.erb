@@ -22,15 +22,16 @@
       <div class="recent-searches">
         <h4>Recent Searches</h4>
         <% if !@history.empty? %>
-          <div class="col s8" data-turbolinks="false">
+          <div class="col s9" data-turbolinks="false">
             <% @history.each do |hist| %>
               <a href="/search/results?location=<%= hist.search_term %>"><p class=recent-searches-p><%= hist.search_term %></p></a>
             <% end %>
+            <h5 class="directions-line">Try searching for a <a href="/search" class="prof-link">forecast</a> or using the <a class="prof-link" href="/search?type=timemachine">time machine</a>.</h5>
           </div>
         <% else %>
           <div class="no-searches-div">
             <h5>Your recent weather searches will appear here.</h5>
-            <h5>Try searching for a <a href="/search" class="prof-link">forecast</a> or using the <a class="prof-link" href="/search?type=timemachine">time machine</a>.</h5>
+            <h5 class="directions-line">Try searching for a <a href="/search" class="prof-link">forecast</a> or using the <a class="prof-link" href="/search?type=timemachine">time machine</a>.</h5>
           </div>
         <% end %>
       </div>
@@ -57,10 +58,11 @@
       <div class="recent-searches">
         <h4>Recent Searches</h4>
         <% if !@history.empty? %>
-          <div class="col s8" data-turbolinks="false">
+          <div class="col s9" data-turbolinks="false">
             <% @history.each do |hist| %>
               <a href="/search/results?location=<%= hist.search_term %>"><p class=recent-searches-p><%= hist.search_term %></p></a>
             <% end %>
+            <h5 class="directions-line">Try searching for a <a href="/search" class="prof-link">forecast</a> or using the <a class="prof-link" href="/search?type=timemachine">time machine</a>.</h5>
           </div>
         <% else %>
           <div class="no-searches-div">

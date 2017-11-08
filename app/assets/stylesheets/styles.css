@@ -262,3 +262,7 @@ div#temperature, div#details {
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
 }
+
+.directions-line {
+  color: #939393;
+}
