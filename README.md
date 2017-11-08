@@ -1,24 +1,43 @@
-# README
+# Skycast
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## [Hosted on Heroku](https://bwskycast.herokuapp.com/)
 
-Things you may want to cover:
+![Skycast](app/assets/images/skycast-screenshot.png)
+### Installation Notes
+
 
 * Ruby version
+ 2.4.2
 
-* System dependencies
+* Rails version
+ 5.1.4
 
-* Configuration
+To install Skycast locally, run `bundle install` in the root directory.
 
-* Database creation
+You will also need to add the following variables to an `.env` file:
 
-* Database initialization
+```
+GEOLOCATION_KEY=*your google maps api key*
+WEATHER_KEY=*your https://darksky.net/dev/ api key*
+```
 
-* How to run the test suite
+### Future Goals
 
-* Services (job queues, cache servers, search engines, etc.)
+- Ability for users to add a location to their favorites
+- Breaking up some of the the views into partials - could've been a little more dry
+- Mobile design - the app is basically web-only.
 
-* Deployment instructions
+### Credits
 
-* ...
+<dl>
+<dt>Technologies</dt>
+<dd>Skycast uses Rails, Google Maps, DarkSky and Materialize. It also uses Httparty to make these external API calls.</dd>
+<dt>APIs</dt>
+<dd>Weather data is served using the <a href='https://darksky.net/dev/'>Dark Sky API</a>. Geolocation data comes from the <a href='https://developers.google.com/maps/web-services/' target='_blank'>Google Web Services API</a>.</dd>
+
+<dt>Styling/CSS</dt>
+<dd>Materialize by Google was used as the CSS framework, together with about 250 lines of custom CSS. </dd>
+
+<dt>Icons</dt>
+<dd>Icons are from various both Materialize and Font Awesome (both gems).</dd>
+</dl>

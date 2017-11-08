@@ -5,20 +5,20 @@
   </div>
 
   <div class="col s5 right">
-      <div class="recent-searches">
-        <h4>Recent Searches</h4>
-        <% if !@user.searches.empty? %>
-          <div class="col s8" data-turbolinks="false">
-            <% @user.searches.last(5).each do |hist| %>
-              <a href="/search/results?location=<%= hist.search_term %>"><p class=recent-searches-p><%= hist.search_term %></p></a>
-            <% end %>
-          </div>
-        <% else %>
-          <div class="no-searches-div">
-            <h5>Your recent weather searches will appear here.</h5>
-            <h5>Try searching for a city, town or landmark in the box on the left.</h5>
-          </div>
-        <% end %>
-      </div>
+    <div class="recent-searches">
+      <h4>Recent Searches</h4>
+      <% if !@user.searches.empty? %>
+        <div class="col s8" data-turbolinks="false">
+          <% @user.searches.last(5).reverse.each do |hist| %>
+            <a href="/search/results?location=<%= hist.search_term %>"><p class=recent-searches-p><%= hist.search_term %></p></a>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="no-searches-div">
+          <h5>Your recent weather searches will appear here.</h5>
+          <h5>Try searching for a city, town or landmark in the box on the left.</h5>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
