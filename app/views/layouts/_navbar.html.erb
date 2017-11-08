@@ -5,7 +5,7 @@
         <a href="/" class="left logo">
         <img class="logo-img" height="45" WIDTH="45" src="<%= image_path('favicon.ico') %>" /></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><%= link_to "SEARCH", "/search", class: "navbar-a" %></li>
+          <li><%= link_to "SEARCH", "/search", class: "navbar-a", data: { no_turbolink: "true" } %></li>
           <li><a href="#" class="navbar-a">TIME MACHINE</a></li>
           <li><%= link_to "PROFILE", "/users/#{current_user.username}", class: "navbar-a profile-a" %></li>
         </ul>
