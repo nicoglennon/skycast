@@ -271,3 +271,7 @@ div.indicator {
   height: 5px !important;
   background-color: #a7ffeb !important;
 }
+
+.darker-div {
+  background-color: gray;
+}
