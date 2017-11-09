@@ -8,7 +8,7 @@
       <h4>Recent Searches</h4>
       <% if !@user.searches.empty? %>
         <div class="col s9" data-turbolinks="false">
-          <% @user.searches.last(5).reverse.each do |hist| %>
+          <% @user.searches.last(4).reverse.each do |hist| %>
             <a href="/search/results?location=<%= hist.search_term %>"><p class=recent-searches-p><%= hist.search_term %></p></a>
           <% end %>
           <h5 class="directions-line">Try searching for a <a href="/search" class="prof-link">forecast</a> or using the <a class="prof-link" href="/search?type=timemachine">time machine</a>.</h5>

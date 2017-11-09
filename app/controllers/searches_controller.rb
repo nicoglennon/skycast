@@ -7,7 +7,7 @@ class SearchesController < ApplicationController
       @timemachine = true
     end
 
-    @history = helpers.current_user.searches.last(5).reverse
+    @history = helpers.current_user.searches.last(4).reverse
   end
 
   def create
@@ -19,7 +19,6 @@ class SearchesController < ApplicationController
     if geolocation_response['status'] == "OK"
       location_name = GeolocationService.location_name(geolocation_response)
       coordinates = GeolocationService.coordinates(geolocation_response)
-
 
       # update the Search object with response values
       @search.assign_attributes({
@@ -56,7 +55,6 @@ class SearchesController < ApplicationController
       # if forecast:
       else
         weather_response = WeatherService.new(coordinates).json_request
-
         current_weather = WeatherService.current_weather(weather_response)
 
         # two_day_hourly_weather = WeatherService.two_day_hourly_weather(weather_response)
@@ -75,21 +73,16 @@ class SearchesController < ApplicationController
         }
       end
 
-
       if @search.save
         render 'show'
       else
         @error = "Search object did not save!"
-
-        @history = helpers.current_user.searches.last(5).reverse
-
+        @history = helpers.current_user.searches.last(4).reverse
         render 'new'
       end
     else
       @error = "Geolocation response failed!"
-
-      @history = helpers.current_user.searches.last(5).reverse
-
+      @history = helpers.current_user.searches.last(4).reverse
       render 'new'
     end
   end
