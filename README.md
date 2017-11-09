@@ -37,7 +37,8 @@ WEATHER_KEY=*your https://darksky.net/dev/ api key*
 <dt>JS Time Machine Visualizations</dt>
 <dd>Visualizations are rendered in <a href='http://c3js.org/'>C3.js</a> using the data pipe coming from DarkSky.</dd>
 <dt>Styling/CSS</dt>
-<dd>Materialize by Google was used as the CSS framework, together with about 250 lines of custom CSS. </dd>
+ 
+<dd><a href='http://materializecss.com/'>Materialize</a> by Google was used as the CSS framework, together with about 250 lines of custom CSS. </dd>
 
 <dt>Icons</dt>
 <dd>Icons are from various both Materialize and Font Awesome (both gems).</dd>
