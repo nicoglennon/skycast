@@ -107,6 +107,9 @@ p.recent-searches-p {
   background-color: #d4eaea;
   transition: background-color 400ms;
   -webkit-transition: background-color 400ms;
+  -webkit-transition: background-color 400ms;
+  -moz-transition: background-color 400ms;
+  -o-transition: background-color 400ms;
 }
 
 
@@ -211,7 +214,7 @@ div#temperature, div#details {
 
 .no-searches-div {
   margin-left: 10px;
-  opacity: 0.6;
+  color: #939393;
 }
 
 .error-p {
@@ -258,4 +261,8 @@ div#temperature, div#details {
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
+}
+
+.directions-line {
+  color: #939393;
 }
