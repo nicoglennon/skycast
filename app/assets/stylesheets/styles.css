@@ -266,3 +266,8 @@ div#temperature, div#details {
 .directions-line {
   color: #939393;
 }
+
+div.indicator {
+  height: 5px !important;
+  background-color: #a7ffeb !important;
+}
