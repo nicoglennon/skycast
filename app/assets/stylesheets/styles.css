@@ -221,6 +221,7 @@ div#temperature, div#details {
   margin-top: 0 !important;
   font-size: 30px;
   color: red;
+  display: block;
 }
 
 
@@ -274,4 +275,14 @@ div.indicator {
 
 .darker-div {
   background-color: gray;
+}
+
+/* date picker display fix */
+
+.picker__month-display, .picker__day-display {
+  font-size: 1.8rem;
+}
+
+.picker__weekday-display {
+  display: none;
 }

@@ -9,8 +9,8 @@
         <%= text_field_tag(:location, nil, :required => true) %>
         <%= label_tag(:location, "City, town, or landmark:") %>
         <div class="input-field search-input-fields">
+          <%= text_field_tag(:date, nil, class: "datepicker", required: true ) %>
           <%= label_tag(:date, "Select date:") %>
-          <%= text_field_tag(:date, nil, class: "datepicker") %>
        </div>
       </div>
       <div class="input-field search-button-field">
@@ -75,7 +75,7 @@
   </div>
 <% end %>
 <% if @error %>
-  <p><%= @error %></p>
+  <p class="error-p"><%= @error %></p>
 <% end %>
 <script>
   $('.datepicker').pickadate({
