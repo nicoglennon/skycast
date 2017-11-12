@@ -9,8 +9,8 @@
         <%= text_field_tag(:location, nil, :required => true) %>
         <%= label_tag(:location, "City, town, or landmark:") %>
         <div class="input-field search-input-fields">
+          <%= text_field_tag(:date, nil, class: "datepicker", required: true ) %>
           <%= label_tag(:date, "Select date:") %>
-          <%= text_field_tag(:date, nil, class: "datepicker") %>
        </div>
       </div>
       <div class="input-field search-button-field">
@@ -21,15 +21,19 @@
     <div class="col s5 right">
       <div class="recent-searches">
         <h4>Recent Searches</h4>
-        <% if !@history.empty? %>
-          <div class="col s9" data-turbolinks="false">
-            <% @history.each do |hist| %>
+        <% if @history.any? %>
+          <div class="row">
+            <div class="col s9" data-turbolinks="false">
+              <% @history.each do |hist| %>
               <a href="/search/results?location=<%= hist.search_term %>"><p class=recent-searches-p><%= hist.search_term %></p></a>
-            <% end %>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
             <h5 class="directions-line">Try searching for a <a href="/search" class="prof-link">forecast</a> or using the <a class="prof-link" href="/search?type=timemachine">time machine</a>.</h5>
           </div>
         <% else %>
-          <div class="no-searches-div">
+          <div class="row no-searches-div">
             <h5>Your recent weather searches will appear here.</h5>
             <h5 class="directions-line">Try searching for a <a href="/search" class="prof-link">forecast</a> or using the <a class="prof-link" href="/search?type=timemachine">time machine</a>.</h5>
           </div>
@@ -57,15 +61,19 @@
     <div class="col s5 right">
       <div class="recent-searches">
         <h4>Recent Searches</h4>
-        <% if !@history.empty? %>
+        <% if @history.any? %>
+        <div class="row">
           <div class="col s9" data-turbolinks="false">
             <% @history.each do |hist| %>
-              <a href="/search/results?location=<%= hist.search_term %>"><p class=recent-searches-p><%= hist.search_term %></p></a>
+            <a href="/search/results?location=<%= hist.search_term %>"><p class=recent-searches-p><%= hist.search_term %></p></a>
             <% end %>
-            <h5 class="directions-line">Try searching for a <a href="/search" class="prof-link">forecast</a> or using the <a class="prof-link" href="/search?type=timemachine">time machine</a>.</h5>
           </div>
+        </div>
+        <div class="row">
+          <h5 class="directions-line">Try searching for a <a href="/search" class="prof-link">forecast</a> or using the <a class="prof-link" href="/search?type=timemachine">time machine</a>.</h5>
+        </div>
         <% else %>
-          <div class="no-searches-div">
+          <div class="row no-searches-div">
             <h5>Your recent weather searches will appear here.</h5>
             <h5>Try searching for a <a href="/search" class="prof-link">forecast</a> or using the <a class="prof-link" href="/search?type=timemachine">time machine</a>.</h5>
           </div>
@@ -75,7 +83,7 @@
   </div>
 <% end %>
 <% if @error %>
-  <p><%= @error %></p>
+  <p class="error-p"><%= @error %></p>
 <% end %>
 <script>
   $('.datepicker').pickadate({
